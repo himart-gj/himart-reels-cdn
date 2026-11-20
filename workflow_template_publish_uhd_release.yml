@@ -1,0 +1,44 @@
+name: Publish Ultra-HD 60FPS Reels Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: '발행할 릴리즈 태그 (예: winter-heat-uhd-v1)'
+        required: true
+        default: 'reels-uhd-latest'
+  push:
+    branches:
+      - main
+    paths:
+      - 'staging/**'
+
+permissions:
+  contents: write
+
+jobs:
+  publish-uhd-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Assemble UHD 60FPS MP4 Assets
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+          python scripts/publish_uhd_reel.py --staging-dir staging --tag "${{ inputs.release_tag || 'reels-uhd-latest' }}"
+      - name: Publish Direct Download MP4 to Public GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${{ inputs.release_tag || 'reels-uhd-latest' }}"
+          shopt -s nullglob
+          MP4_FILES=(dist_uhd/*.mp4)
+          [ ${#MP4_FILES[@]} -eq 0 ] && exit 0
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "${MP4_FILES[@]}" --clobber
+          else
+            gh release create "$TAG" "${MP4_FILES[@]}" --title "Himart UHD 60FPS Reels ($TAG)" --notes "Direct UHD MP4 for Make & Zernio."
+          fi
