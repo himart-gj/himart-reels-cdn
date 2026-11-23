@@ -1,0 +1,35 @@
+{
+  "bundle_id": "meta-sub-safe-v2-20261123",
+  "ad_account_id": "1158965864569168",
+  "campaign_id": "120255152820940722",
+  "ad_set_id": "120255152833620722",
+  "landing_url": "https://himart-gj.github.io/himart-subscription-simulator/",
+  "bgm_license": {
+    "title": "Nolan Čapek - Radiant Gift",
+    "license": "CC0 1.0 Public Domain Dedication",
+    "source": "https://commons.wikimedia.org/wiki/File:Nolan_%C4%8Capek_-_Radiant_Gift.ogg"
+  },
+  "assets": [
+    {
+      "slot": "image_01_keyart_4x5",
+      "name": "[메타광고]_01_구독프리드_키아트_안전본_4x5.png",
+      "dimensions": "1080x1350",
+      "sha256": "b4f8131bfdb68f66ebae4cc0371f3dfb45ea1d6d0d249b9668f0a0fde088f846",
+      "meta_image_hash": "071db3728f91f28d36de6446562f188d"
+    },
+    {
+      "slot": "image_02_table_4x5",
+      "name": "[메타광고]_02_구독프리드_실가격혜택표_안전본_4x5.png",
+      "dimensions": "1080x1350",
+      "sha256": "7df7347a2ac10134d88b3b8a1561830215ace3c0d54c6a8e436307dcd07811ef",
+      "meta_image_hash": "af761801f6ee19429d5da5c7f2a700bf"
+    },
+    {
+      "slot": "video_03_reel_9x16_uhd60",
+      "name": "[메타광고]_03_구독프리드_릴스광고_CC0무보이스_안전본_UHD60.mp4",
+      "dimensions": "1080x1920@60fps",
+      "sha256": "2d0267ff6ac67eda19e00c33676e4ec4ac6e1b0d785f440c95b78c98614a9cce",
+      "meta_video_id": "1085729347357519"
+    }
+  ]
+}
